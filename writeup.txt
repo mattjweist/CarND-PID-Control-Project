@@ -1,0 +1,22 @@
+Write-up for PID Control Project
+
+Rubric requirement preceded by "-"
+
+Compilation
+- Your code should compile.
+The code compiles without issue
+
+Implementation
+- The PID procedure follows what was taught in the lesson
+The proportional, integral, and derivative errors are all derived from CTE (cross track error) just like in the lessons. The total error is then the sum of each error multiplied by its corresponding parameter (gain). 
+
+
+Reflection
+- Describe the effect each of the P, I, D components had in your implementation.
+An increase in the proportional component adds oscillation but decreases the response time as expected. An increase in the integral control sends the car off-track; it's not necessary for this project, because there is no inherent system bias. Integral control is more useful when there is an expected steady-state error. An increase in the derivative control keeps the vehicle very close to the center of the lane but increases the frequency of oscillation.
+- Describe how the final hyperparameters were chosen.
+I manually tuned the parameters. I started with (Kp,Ki,Kd) = (1.0,0.0,0.0), which had too much oscillation, so I added derivative control and reduced the proportional gain until a good combination was found. For a smooth driving experience, the proportional control is kept relatively low in comparison to the derivative control, while the integral control is set to zero. The final parameters are (0.125,0.0,1.0).
+
+Simulation
+- The vehicle must successfully drive a lap around the track.
+The vehicle does not leave the road throughout the duration of the lap. 
